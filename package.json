@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "node ace serve --watch",
-    "build": "node ace build --production",
-    "start": "node server.js"
+    "build": "node ace build --production && cd build && npm ci --production && cp ../.env .",
+    "start": "node server.js",
+    "deploy": "npm run build && pm2 start ecosystem.config.js"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^5.3.7",
